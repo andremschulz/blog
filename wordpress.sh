@@ -29,9 +29,9 @@ wget $WORDPRESS
 unzip latest.zip 
 mv -v wordpress/ /var/www/html/
 cd /root/blog/
-cp -v ./htaccess /var/www/html/wp/.htaccess 
+cp -v ./htaccess /var/www/html/.htaccess 
 cp -v ./wp-config.php /var/www/html/
-chmod -Rfv 755 /var/www/html/wp/ 
+chmod -Rfv 755 /var/www/html/
 chown -Rfv www-data.www-data /var/www/html/
 rm -v latest.zip 
 echo -e "Criando a Base de Dados do Wordpress, aguarde..."
