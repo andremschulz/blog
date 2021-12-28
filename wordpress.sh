@@ -27,12 +27,12 @@ apt update && apt upgrade -y && apt autoremove -y
 echo -e "Fazendo o download, instalação e configuração do WP.."
 wget $WORDPRESS 
 unzip latest.zip 
-mv -v wordpress/ /var/www/html/wp 
+mv -v wordpress/ /var/www/html/
 cd /root/blog/
 cp -v ./htaccess /var/www/html/wp/.htaccess 
-cp -v ./wp-config.php /var/www/html/wp/ 
+cp -v ./wp-config.php /var/www/html/
 chmod -Rfv 755 /var/www/html/wp/ 
-chown -Rfv www-data.www-data /var/www/html/wp/ 
+chown -Rfv www-data.www-data /var/www/html/
 rm -v latest.zip 
 echo -e "Criando a Base de Dados do Wordpress, aguarde..."
 mysql -u $USER -p$PASSWORD -e "$DATABASE" mysql 
@@ -41,7 +41,7 @@ mysql -u $USER -p$PASSWORD -e "$GRANTDATABASE" mysql
 mysql -u $USER -p$PASSWORD -e "$GRANTALL" mysql 
 mysql -u $USER -p$PASSWORD -e "$FLUSH" mysql 
 echo -e "Editando o arquivo de configuração da Base de Dados do Wordpress, aguarde..."
-sed 's/define('DB_PASSWORD', 'wordpress');/define('DB_PASSWORD', '${PASSWORD}'); /g' /var/www/html/wp/wp-config.php
+sed 's/define('DB_PASSWORD', 'wordpress');/define('DB_PASSWORD', '${PASSWORD}'); /g' /var/www/html/wp-config.php
 sed -i '225 i ServerTokens ProductOnly' /etc/apache2/apache2.conf 
 sed -i '226 i ServerSignature Off' /etc/apache2/apache2.conf 
 systemctl restart apache2
